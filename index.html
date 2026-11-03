@@ -1,0 +1,427 @@
+<title>Shaun Matlou</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Karabo Shaun Matlou: Computer Science student, software developer, networking and cybersecurity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column, read top to bottom. The page is organised like a threat model:
+   what I built, how it could be attacked, and how I defend it. Navy ink from the CV, amber for "alert". */
+:root{
+  --paper:#F5F7FA; --surface:#FFFFFF; --ink:#13213A; --muted:#55627A; --line:#D9DFE8;
+  --navy:#1F3864; --alert:#B45F06; --alert-soft:#FBEFD9; --ok:#1E6B45; --ok-soft:#E1F1E7; --bad:#A12A2A; --bad-soft:#F8E3E3;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1522; --surface:#152033; --ink:#E6ECF5; --muted:#9AA8BF; --line:#26344C;
+  --navy:#8FB0E8; --alert:#F0A84A; --alert-soft:#33270F; --ok:#6FCF97; --ok-soft:#12291D; --bad:#F08A8A; --bad-soft:#341616; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1522; --surface:#152033; --ink:#E6ECF5; --muted:#9AA8BF; --line:#26344C;
+  --navy:#8FB0E8; --alert:#F0A84A; --alert-soft:#33270F; --ok:#6FCF97; --ok-soft:#12291D; --bad:#F08A8A; --bad-soft:#341616; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--navy);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--alert);outline-offset:2px}
+.wrap{max-width:960px;margin:0 auto}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;background:var(--surface);padding:8px 12px;z-index:20}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{font:800 15px/1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{font:500 13px/1 var(--mono);color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+
+section{padding-block:56px;border-bottom:1px solid var(--line)}
+.label{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--alert);margin:0 0 12px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-weight:800;font-size:clamp(34px,6.2vw,60px);line-height:1.02;letter-spacing:-.01em}
+h2{font-weight:800;font-size:clamp(26px,3.6vw,36px);line-height:1.1;margin-bottom:12px}
+h3{font-weight:600;font-size:20px;line-height:1.25}
+.lede{color:var(--muted);max-width:62ch;margin:0 0 28px}
+p{max-width:65ch}
+
+/* Hero */
+.hero{padding-block:64px 48px}
+.hero h1 em{font-style:normal;color:var(--alert)}
+.hero .intro{font-size:18px;max-width:58ch;color:var(--ink);margin:20px 0 28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:6px;font:600 15px/1 var(--body);text-decoration:none;border:1px solid var(--navy)}
+.btn.primary{background:var(--navy);color:var(--paper)}
+.btn.ghost{color:var(--navy);background:transparent}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:40px;align-items:center}
+.portrait{margin:0}
+.portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+figcaption{font:400 12px/1.5 var(--mono);color:var(--muted);margin-top:8px}
+.shot{margin:16px 0 0;grid-column:1/-1}
+.shot img{display:block;width:100%;border-radius:6px;border:1px solid var(--line)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:40px}
+.facts div{background:var(--surface);padding:16px 18px}
+.facts b{display:block;font:800 26px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.facts span{font:400 13px/1.4 var(--body);color:var(--muted)}
+
+/* Projects */
+.projects{display:grid;gap:20px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,220px);gap:24px}
+.proj.featured{border-color:var(--navy)}
+.proj .meta{font:400 13px/1.5 var(--mono);color:var(--muted);margin:6px 0 12px}
+.proj ul{margin:0;padding-left:18px}
+.proj li{margin-bottom:6px}
+.side{display:flex;flex-direction:column;gap:12px;font-size:14px}
+.side dt{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.side dd{margin:0}
+.badge{display:inline-block;font:500 12px/1 var(--mono);padding:5px 8px;border-radius:4px;background:var(--alert-soft);color:var(--alert)}
+.links{display:flex;flex-direction:column;gap:6px}
+
+/* Threat model */
+.tm{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:20px;align-items:start}
+.attacks{display:flex;flex-direction:column;gap:8px}
+.attack{all:unset;cursor:pointer;display:block;padding:14px 16px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.attack small{display:block;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.attack strong{font:600 16px/1.3 var(--body)}
+.attack[aria-selected="true"]{border-color:var(--alert);box-shadow:inset 3px 0 0 var(--alert)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px;min-width:0}
+.panel .tool{font:500 13px/1.4 var(--mono);color:var(--navy);margin:4px 0 14px}
+.lab{margin-top:18px;border-top:1px dashed var(--line);padding-top:18px}
+.lab label{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
+.lab textarea{width:100%;min-height:70px;font:400 14px/1.5 var(--mono);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px;resize:vertical}
+.hash{font:400 12px/1.5 var(--mono);word-break:break-all;color:var(--muted);margin:10px 0 0}
+.hash b{color:var(--ink);font-weight:500}
+.verdict{display:inline-block;margin-top:10px;font:600 13px/1 var(--mono);padding:7px 10px;border-radius:4px}
+.verdict.ok{background:var(--ok-soft);color:var(--ok)}
+.verdict.bad{background:var(--bad-soft);color:var(--bad)}
+.lab .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.mini{all:unset;cursor:pointer;font:500 13px/1 var(--mono);color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 32px}
+.skills h3{font-size:16px;margin-bottom:6px}
+.skills p{margin:0;color:var(--muted);font-size:15px}
+.skills a{font:500 12px/1 var(--mono)}
+
+/* Record */
+.record{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+.awards{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.awards li{border-left:3px solid var(--alert);padding-left:14px}
+.awards b{display:block;font:600 16px/1.3 var(--body)}
+.awards span{color:var(--muted);font-size:14px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+caption{text-align:left;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-bottom:10px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+td.n{text-align:right;font:500 14px/1 var(--mono);font-variant-numeric:tabular-nums}
+tr.yr td{font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--navy);padding-top:16px;border-bottom:none}
+
+/* About + contact */
+.about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px}
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.timeline b{display:block}
+.timeline span{color:var(--muted);font-size:14px}
+.contact{display:flex;flex-direction:column;gap:14px}
+.email{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.email code{font:500 clamp(16px,2.6vw,22px)/1.2 var(--mono);color:var(--ink);user-select:all;word-break:break-all}
+.copy{all:unset;cursor:pointer;font:500 13px/1 var(--mono);padding:8px 10px;border:1px solid var(--line);border-radius:4px;color:var(--navy)}
+footer{padding-block:28px;color:var(--muted);font:400 13px/1.5 var(--mono)}
+
+@media (max-width:720px){
+  .proj,.tm,.record,.about,.hero-grid{grid-template-columns:minmax(0,1fr)}
+  .portrait{max-width:280px}
+  section{padding-block:44px}
+  .attacks{flex-direction:row;overflow-x:auto;padding-bottom:4px}
+  .attack{min-width:180px}
+}
+@media (prefers-reduced-motion:no-preference){.attack,.btn{transition:border-color .15s,background .15s,box-shadow .15s}}
+</style>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top">Shaun Matlou</a>
+  <nav aria-label="Sections"><ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#threats">Security</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#record">Record</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul></nav>
+</div></header>
+
+<main id="main" class="wrap">
+
+<section class="hero" id="top">
+  <div class="hero-grid">
+  <div>
+  <p class="label">Software developer · Networking &amp; cybersecurity · Gauteng</p>
+  <h1>I build systems, then ask <em>how they could be attacked</em> before anyone else does.</h1>
+  <p class="intro">I'm Karabo Shaun Matlou, a third-year Computer Science student at Eduvos. I build and deploy full-stack web apps in PHP, MySQL and Java, and I spend most of my time on networking and security. At HackSecure 2026 my team placed 2nd with Ubufakazi, a digital forensics tool for scam victims, and I presented its security model to the judges.</p>
+  <div class="actions">
+    <a class="btn primary" href="#work">See my work</a>
+    <a class="btn ghost" href="cv.pdf" target="_blank" rel="noopener">Open my CV</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/shaun-matlou/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  </div>
+  <figure class="portrait">
+    <img src="img/shaun.jpg" alt="Shaun Matlou smiling, in a white shirt and black tie" width="640" height="800">
+    <figcaption>Karabo Shaun Matlou</figcaption>
+  </figure>
+  </div>
+  <div class="facts">
+    <div><b>2nd</b><span>HackSecure 2026, Track 4: Digital Forensics</span></div>
+    <div><b>13</b><span>module distinctions at Eduvos</span></div>
+    <div><b>4</b><span>projects live or deployed</span></div>
+    <div><b>93%</b><span>top mark, Computer Network Technologies</span></div>
+  </div>
+</section>
+
+<section id="work">
+  <p class="label">Work</p>
+  <h2>Projects</h2>
+  <p class="lede">Each one is deployed or demoed, with what I did on it spelled out.</p>
+  <div class="projects">
+
+    <article class="proj featured">
+      <div>
+        <span class="badge">2nd place · HackSecure 2026</span>
+        <h3 style="margin-top:10px">Ubufakazi: scam evidence and victim linking</h3>
+        <p class="meta">Team CyberThreat · CyberM8 · Oct 2026</p>
+        <p>Scam gangs use the same bank account on victims across provinces, but each victim reports alone. Ubufakazi (isiZulu for "evidence") turns a victim's WhatsApp chat and payment slips into a tamper-evident case file, links victims of the same syndicate, and helps banks block the account and warn the next person before they pay.</p>
+        <ul>
+          <li>Designed and presented the security model to the judges: evidence forgery, framing an innocent account, AI prompt injection and data theft, each with a defence.</li>
+          <li>Shaped the bank side of the product: free for victims, with banks subscribing to syndicate alerts and a warning before a customer pays a flagged account.</li>
+          <li>Worked through POPIA for the design: consent first, minimal data, and hashed identifiers instead of raw account numbers.</li>
+        </ul>
+      </div>
+      <dl class="side">
+        <div><dt>My role</dt><dd>Product &amp; platform, security and impact presenter</dd></div>
+        <div><dt>Built with</dt><dd>SHA-256, HMAC-SHA256, RFC 3161 timestamps, FastAPI, PostgreSQL</dd></div>
+        <div><dt>Links</dt><dd class="links"><a href="https://ubufakazi.netlify.app" target="_blank" rel="noopener">Live demo</a><a href="#threats">How we defend it</a></dd></div>
+      </dl>
+      <figure class="shot">
+        <img src="img/ubufakazi.jpg" alt="Ubufakazi home page: 'Turn digital evidence into real justice', with cards for extracted evidence, a SHA-256 fingerprint marked verified, 30 linked reports and a demo police station" loading="lazy">
+        <figcaption>Ubufakazi home page. All case data shown is synthetic demo data.</figcaption>
+      </figure>
+    </article>
+
+    <article class="proj">
+      <div>
+        <h3>Beautified by Lelo: e-commerce for a real client</h3>
+        <p class="meta">Project module · 2026</p>
+        <p>A database-driven store for a wig business, covering products, appointments and custom wig requests, built from the prototype the client chose.</p>
+        <ul>
+          <li>Merged three team members' code into one working codebase.</li>
+          <li>Added Courier Guy (ShipLogic) delivery quotes at checkout, alongside PayFast payments.</li>
+        </ul>
+      </div>
+      <dl class="side">
+        <div><dt>Built with</dt><dd>PHP, MySQL, PayFast, ShipLogic API, cPanel</dd></div>
+        <div><dt>Links</dt><dd class="links"><a href="https://beautifiedbylelo.co.za" target="_blank" rel="noopener">beautifiedbylelo.co.za</a></dd></div>
+      </dl>
+      <figure class="shot">
+        <img src="img/bbl.jpg" alt="Beautified by Lelo home page: 'Beautiful wigs, made for you', with a sale banner, search, cart and buttons to shop or book an appointment" loading="lazy">
+        <figcaption>Beautified by Lelo home page, live at beautifiedbylelo.co.za.</figcaption>
+      </figure>
+    </article>
+
+    <article class="proj">
+      <div>
+        <h3>TradeHub: customer-to-customer marketplace</h3>
+        <p class="meta">Solo build · 2025</p>
+        <p>A marketplace where people list and buy from each other, with an admin side for moderation.</p>
+        <ul>
+          <li>Built role-based access control for admins and a buyer–seller messaging system.</li>
+          <li>Deployed to live hosting with environment-based configuration, and fixed the bugs that only showed up there: broken navigation paths, deprecation warnings and duplicate markup.</li>
+        </ul>
+      </div>
+      <dl class="side">
+        <div><dt>Built with</dt><dd>PHP 8, MySQL, Bootstrap 5.3, JavaScript, AJAX</dd></div>
+        <div><dt>Links</dt><dd class="links"><a href="https://tradehubs.infinityfreeapp.com" target="_blank" rel="noopener">Live site</a><a href="https://github.com/shaunmatlou/tradehub" target="_blank" rel="noopener">Code on GitHub</a></dd></div>
+      </dl>
+    </article>
+
+    <article class="proj">
+      <div>
+        <h3>Patel Hardware: Java REST web service</h3>
+        <p class="meta">Coursework · 2025</p>
+        <p>An inventory system for a hardware store, served as a RESTful Java web service.</p>
+        <ul>
+          <li>Wrote 11 Java servlet classes and 7 HTML front-end pages.</li>
+          <li>Designed the MySQL schema, set up Maven dependencies, and tested end to end on Apache Tomcat.</li>
+        </ul>
+      </div>
+      <dl class="side">
+        <div><dt>Built with</dt><dd>Java, Maven, Jersey, Jackson, MySQL, Tomcat 10.1</dd></div>
+      </dl>
+    </article>
+
+  </div>
+</section>
+
+<section id="threats">
+  <p class="label">How I think about security</p>
+  <h2>Attack it first</h2>
+  <p class="lede">This is the threat model I presented for Ubufakazi at HackSecure. Pick an attack to see the defence and the tool behind it.</p>
+  <div class="tm">
+    <div class="attacks" role="tablist" aria-label="Attacks">
+      <button class="attack" role="tab" id="t-forge" aria-controls="p-forge" aria-selected="true"><small>Attack 1</small><strong>Forge the evidence</strong></button>
+      <button class="attack" role="tab" id="t-frame" aria-controls="p-frame" aria-selected="false"><small>Attack 2</small><strong>Frame an innocent person</strong></button>
+      <button class="attack" role="tab" id="t-ai" aria-controls="p-ai" aria-selected="false"><small>Attack 3</small><strong>Trick the AI</strong></button>
+      <button class="attack" role="tab" id="t-data" aria-controls="p-data" aria-selected="false"><small>Attack 4</small><strong>Steal victims' data</strong></button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-forge" aria-labelledby="t-forge">
+      <h3>Change one number on a payment slip</h3>
+      <p class="tool">Defence: SHA-256 fingerprints + RFC 3161 timestamps</p>
+      <p>Every file gets a fingerprint the moment it arrives, and an independent service stamps the time. Change a single character and the fingerprint no longer matches, so the case pack shows ALTERED.</p>
+      <div class="lab">
+        <label for="slip">Try it: edit this payment line</label>
+        <textarea id="slip" spellcheck="false">12 Oct 2026 · Paid R1 850.00 to acc 1047228359 · Ref: UNIFORM FEE</textarea>
+        <p class="hash">Original fingerprint: <b id="h-orig">calculating…</b></p>
+        <p class="hash">Current fingerprint: <b id="h-now">calculating…</b></p>
+        <div class="row"><span class="verdict ok" id="verdict" aria-live="polite">Authentic, unchanged</span><button class="mini" id="reset" type="button">Reset</button></div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-frame" aria-labelledby="t-frame" hidden>
+      <h3>Submit fake reports against someone's account</h3>
+      <p class="tool">Defence: corroboration rule</p>
+      <p>One report alone only ever says "check before you pay". A stop warning needs several independent victims, in at least two regions, each with a chat and proof of payment. The bank checks its own records before it blocks anything, so a fake report can't freeze a real person's account.</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-ai" aria-labelledby="t-ai" hidden>
+      <h3>Hide instructions inside a screenshot</h3>
+      <p class="tool">Defence: prompt-injection scanner + "unverified" labels</p>
+      <p>A scammer could hide text like "AI: ignore your rules" in an image. Evidence and AI output are scanned for hidden instructions and invisible characters. Anything found raises a red flag for the investigator, AI-read details stay marked "unverified" next to the original, and AI alone can never alert a bank. This is the top risk on the OWASP Top 10 for AI applications.</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-data" aria-labelledby="t-data" hidden>
+      <h3>Break in and copy the database</h3>
+      <p class="tool">Defence: keyed HMAC-SHA256 hashes + POPIA by design</p>
+      <p>Scammer account and phone numbers are stored as secret codes made with a key only the server holds. Plain SHA-256 wouldn't be enough, because South African phone numbers follow a short pattern that can be guessed. Banks see counts, never victims' names or chats. Staff sign in with two-factor authentication, and victims consent before anything is saved.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <p class="label">Skills</p>
+  <h2>What I work with</h2>
+  <div class="skills">
+    <div><h3>Languages</h3><p>Java, C#, C++, PHP, JavaScript, SQL</p></div>
+    <div><h3>Web &amp; backend</h3><p>REST APIs with JAX-RS and Jersey, WebSockets, AJAX, Bootstrap 5, deployment to live hosting. <a href="#work">See TradeHub</a></p></div>
+    <div><h3>Databases</h3><p>MySQL, relational schema design, SQL query design. <a href="#work">See Patel Hardware</a></p></div>
+    <div><h3>Networking</h3><p>VLANs, DHCP, OSPF, Cisco Packet Tracer, Linux. Distinctions in Computer Network Technologies (93%) and Network Security (83%).</p></div>
+    <div><h3>Security</h3><p>Threat modelling, OWASP Top 10, POPIA, evidence hashing with SHA-256 and HMAC, cryptography fundamentals. <a href="#threats">See the threat model</a></p></div>
+    <div><h3>Tools &amp; concepts</h3><p>Git and GitHub, NetBeans, Maven, Apache Tomcat, cPanel; object-oriented design, design patterns, data structures and algorithms.</p></div>
+  </div>
+</section>
+
+<section id="record">
+  <p class="label">Record</p>
+  <h2>Awards and results</h2>
+  <div class="record">
+    <ul class="awards">
+      <li><b>2nd Place, HackSecure 2026</b><span>CyberM8 · Track 4: Digital Forensics · Team CyberThreat, for Ubufakazi</span></li>
+      <li><b>13 module distinctions</b><span>BSc Computer Science, Eduvos · 2024 and 2025</span></li>
+      <li><b>BSc Computer Science, Eduvos</b><span>NQF 7 · Feb 2024 to present · 265 credits completed</span></li>
+    </ul>
+    <div class="tablewrap">
+      <table>
+        <caption>Distinctions by year</caption>
+        <tbody>
+          <tr class="yr"><td colspan="2">2024 · first year</td></tr>
+          <tr><td>Computer Network Technologies</td><td class="n">93%</td></tr>
+          <tr><td>Introduction to Programming using C++</td><td class="n">93%</td></tr>
+          <tr><td>Generic Algorithm Design</td><td class="n">87%</td></tr>
+          <tr><td>AI Ethics and Privacy</td><td class="n">86%</td></tr>
+          <tr><td>Computer Network and Security</td><td class="n">83%</td></tr>
+          <tr><td>Linux-based Operating Systems</td><td class="n">83%</td></tr>
+          <tr><td>Computer Skills (Microsoft)</td><td class="n">81%</td></tr>
+          <tr><td>Non-Technical Skills for IT Professionals</td><td class="n">76%</td></tr>
+          <tr class="yr"><td colspan="2">2025 · second year</td></tr>
+          <tr><td>Object-Oriented Programming in C#</td><td class="n">86%</td></tr>
+          <tr><td>Network Security</td><td class="n">83%</td></tr>
+          <tr><td>Artificial Intelligence Techniques</td><td class="n">82%</td></tr>
+          <tr><td>Database Systems</td><td class="n">81%</td></tr>
+          <tr><td>Data Structures and Algorithms in C#</td><td class="n">75%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <p class="label">About</p>
+  <h2>Beyond the code</h2>
+  <div class="about">
+    <div>
+      <p>I like work where getting it wrong has a cost, which is why I gravitate to networking and security. Before I write a feature, I ask how someone could misuse it.</p>
+      <p>Outside class I play varsity basketball as a point and shooting guard, and I'm part of a weekly cell group and church ministry. Both keep me disciplined about time, and comfortable working as part of a team.</p>
+      <p>I'm looking for internships and graduate roles in software development or cybersecurity.</p>
+    </div>
+    <ul class="timeline">
+      <li><b>IT Support Intern, 3C Ministries</b><span>1 year · troubleshooting hardware, software and network issues, and maintaining networked systems</span></li>
+      <li><b>BSc Computer Science, Eduvos</b><span>2024 to present</span></li>
+      <li><b>National Senior Certificate, Curro Thatchfield</b><span>2022 · Bachelor pass</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="label">Contact</p>
+  <h2>Let's talk</h2>
+  <div class="contact">
+    <div class="email"><code id="mail">shaunmatlou123@gmail.com</code><button class="copy" id="copy" type="button">Copy email</button></div>
+    <p style="margin:0">067 092 6356 · Gauteng, South Africa</p>
+    <p style="margin:0"><a href="https://www.linkedin.com/in/shaun-matlou/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/shaunmatlou" target="_blank" rel="noopener">GitHub</a> · <a href="cv.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
+  </div>
+</section>
+
+<footer>Karabo Shaun Matlou · Built by hand in HTML, CSS and JavaScript · All Ubufakazi demo data is fictional.</footer>
+</main>
+
+<script>
+(function(){
+  // Threat-model tabs
+  var tabs=[].slice.call(document.querySelectorAll('.attack'));
+  function select(t){
+    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      var d=(e.key==='ArrowDown'||e.key==='ArrowRight')?1:(e.key==='ArrowUp'||e.key==='ArrowLeft')?-1:0;
+      if(d){e.preventDefault();var n=tabs[(i+d+tabs.length)%tabs.length];select(n);n.focus();}
+    });
+  });
+  select(tabs[0]);
+
+  // Live SHA-256 demo
+  var slip=document.getElementById('slip'),orig=slip.value,hO=document.getElementById('h-orig'),hN=document.getElementById('h-now'),v=document.getElementById('verdict'),origHash=null;
+  function sha(s){
+    if(!(window.crypto&&crypto.subtle))return Promise.reject();
+    return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')});
+  }
+  function update(){
+    sha(slip.value).then(function(h){
+      hN.textContent=h;
+      var same=h===origHash;
+      v.textContent=same?'Authentic, unchanged':'ALTERED: fingerprint does not match';
+      v.className='verdict '+(same?'ok':'bad');
+    }).catch(function(){hN.textContent='Your browser blocked hashing here.'});
+  }
+  sha(orig).then(function(h){origHash=h;hO.textContent=h;update();}).catch(function(){hO.textContent=hN.textContent='Your browser blocked hashing here.'});
+  slip.addEventListener('input',update);
+  document.getElementById('reset').addEventListener('click',function(){slip.value=orig;update();});
+
+  // Copy email
+  var btn=document.getElementById('copy');
+  btn.addEventListener('click',function(){
+    var t=document.getElementById('mail').textContent;
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected, press Ctrl+C';}
+    try{navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email'},1600)},fallback);}catch(e){fallback()}
+  });
+})();
+</script>
